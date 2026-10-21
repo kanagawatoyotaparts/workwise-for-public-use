@@ -18,6 +18,15 @@ export const KANAGAWA_MAIN_STORES = [
   '小田原店',
 ] as const;
 
+export interface StoreLocation {
+  name: string;
+  address: string;
+  latitude: number;
+  longitude: number;
+  phone?: string;
+  postalCode?: string;
+}
+
 export const KANAGAWA_STORE_LOCATIONS: Record<string, StoreLocation> = {
   '横浜店': {
     name: '横浜店',
@@ -400,18 +409,10 @@ export const AICHI_STORE_ORDER: Record<string, number> = {
 };
 
 // ==========================================
-// 共通エクスポート（支社に応じて自動切り替え）
+// 共通エクスポート（支社に応じて完全排他的に自動切り替え）
 // ==========================================
-export interface StoreLocation {
-  name: string;
-  address: string;
-  latitude: number;
-  longitude: number;
-  phone?: string;
-  postalCode?: string;
-}
 
-// 画面表示・選択用店舗一覧（愛知支社の場合は15営業所、神奈川支社の場合は7店舗）
+// 画面表示・選択用店舗一覧（愛知支社版では愛知15営業所のみ、神奈川支社版では神奈川7店舗のみ）
 export const MAIN_STORES: readonly string[] = new Proxy([] as unknown as readonly string[], {
   get(target, prop, receiver) {
     const list = isAichiBranch() ? AICHI_MAIN_STORES : KANAGAWA_MAIN_STORES;
@@ -423,27 +424,79 @@ export const MAIN_STORES: readonly string[] = new Proxy([] as unknown as readonl
   }
 });
 
-// 全支社の営業所座標マップ（どちらの支社でも安全に参照可能）
-export const STORE_LOCATIONS: Record<string, StoreLocation> = {
-  ...KANAGAWA_STORE_LOCATIONS,
-  ...AICHI_STORE_LOCATIONS,
-};
+// 営業所座標マップ（愛知支社版では愛知15営業所のみ、神奈川支社版では神奈川7店舗のみ）
+export const STORE_LOCATIONS: Record<string, StoreLocation> = new Proxy({} as Record<string, StoreLocation>, {
+  get(target, prop, receiver) {
+    const map = isAichiBranch() ? AICHI_STORE_LOCATIONS : KANAGAWA_STORE_LOCATIONS;
+    return (map as any)[prop];
+  },
+  ownKeys(target) {
+    const map = isAichiBranch() ? AICHI_STORE_LOCATIONS : KANAGAWA_STORE_LOCATIONS;
+    return Reflect.ownKeys(map);
+  },
+  getOwnPropertyDescriptor(target, prop) {
+    const map = isAichiBranch() ? AICHI_STORE_LOCATIONS : KANAGAWA_STORE_LOCATIONS;
+    return Reflect.getOwnPropertyDescriptor(map, prop);
+  },
+  has(target, prop) {
+    const map = isAichiBranch() ? AICHI_STORE_LOCATIONS : KANAGAWA_STORE_LOCATIONS;
+    return prop in map;
+  }
+});
 
-// 全支社の店舗カラーマップ
-export const STORE_COLORS: Record<string, string> = {
-  ...KANAGAWA_STORE_COLORS,
-  ...AICHI_STORE_COLORS,
-};
+// 店舗カラーマップ（愛知支社版では愛知15営業所のみ、神奈川支社版では神奈川7店舗のみ）
+export const STORE_COLORS: Record<string, string> = new Proxy({} as Record<string, string>, {
+  get(target, prop, receiver) {
+    const map = isAichiBranch() ? AICHI_STORE_COLORS : KANAGAWA_STORE_COLORS;
+    return (map as any)[prop];
+  },
+  ownKeys(target) {
+    const map = isAichiBranch() ? AICHI_STORE_COLORS : KANAGAWA_STORE_COLORS;
+    return Reflect.ownKeys(map);
+  },
+  getOwnPropertyDescriptor(target, prop) {
+    const map = isAichiBranch() ? AICHI_STORE_COLORS : KANAGAWA_STORE_COLORS;
+    return Reflect.getOwnPropertyDescriptor(map, prop);
+  },
+  has(target, prop) {
+    const map = isAichiBranch() ? AICHI_STORE_COLORS : KANAGAWA_STORE_COLORS;
+    return prop in map;
+  }
+});
 
-// 全支社のソート順マップ
-export const STORE_ORDER: Record<string, number> = {
-  ...KANAGAWA_STORE_ORDER,
-  ...AICHI_STORE_ORDER,
-};
+// ソート順マップ（愛知支社版では愛知15営業所のみ、神奈川支社版では神奈川7店舗のみ）
+export const STORE_ORDER: Record<string, number> = new Proxy({} as Record<string, number>, {
+  get(target, prop, receiver) {
+    const map = isAichiBranch() ? AICHI_STORE_ORDER : KANAGAWA_STORE_ORDER;
+    return (map as any)[prop];
+  },
+  ownKeys(target) {
+    const map = isAichiBranch() ? AICHI_STORE_ORDER : KANAGAWA_STORE_ORDER;
+    return Reflect.ownKeys(map);
+  },
+  getOwnPropertyDescriptor(target, prop) {
+    const map = isAichiBranch() ? AICHI_STORE_ORDER : KANAGAWA_STORE_ORDER;
+    return Reflect.getOwnPropertyDescriptor(map, prop);
+  },
+  has(target, prop) {
+    const map = isAichiBranch() ? AICHI_STORE_ORDER : KANAGAWA_STORE_ORDER;
+    return prop in map;
+  }
+});
 
-// デフォルト拠点
-export const DEFAULT_OFFICE_LOCATION: StoreLocation = isAichiBranch()
-  ? AICHI_STORE_LOCATIONS['熱田営業所']
-  : KANAGAWA_STORE_LOCATIONS['横浜店'];
+// デフォルト拠点（愛知支社版: 熱田営業所 / 神奈川支社版: 横浜店）
+export const DEFAULT_OFFICE_LOCATION: StoreLocation = new Proxy({} as StoreLocation, {
+  get(target, prop, receiver) {
+    const def = isAichiBranch()
+      ? AICHI_STORE_LOCATIONS['熱田営業所']
+      : KANAGAWA_STORE_LOCATIONS['横浜店'];
+    return (def as any)[prop];
+  }
+});
+
+// デフォルト拠点名
+export const getDefaultStoreName = (): string => {
+  return isAichiBranch() ? '熱田営業所' : '横浜店';
+};
 
 export const APP_VERSION = '2.2.5';

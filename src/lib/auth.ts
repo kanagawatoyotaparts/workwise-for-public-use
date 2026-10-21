@@ -11,6 +11,7 @@ import {
 import { initializeFirebase } from '@/firebase';
 import { StaffService } from '@/services/staff-service';
 import type { Staff, WithId } from './types';
+import { getDefaultStoreName } from './constants';
 
 const USER_SESSION_KEY = 'workwise-user-profile';
 
@@ -128,7 +129,7 @@ export const signUpWithEmail = async (email: string, password: string, name: str
         role: 'staff',
         currentStatus: '未出勤',
         isOnline: true,
-        '母店': '横浜店',
+        '母店': getDefaultStoreName(),
         color: '#3B82F6',
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString()

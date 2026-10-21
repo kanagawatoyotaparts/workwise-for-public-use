@@ -14,6 +14,7 @@ import { ORDER_GAS_URL, STATUS_COLUMN_NAME } from '@/lib/settings';
 import type { StaffStatus, WithId, ScheduleEvent, Order } from '@/lib/types';
 import { Badge } from '@/components/ui/badge';
 import { cn, findKey, calculateTravelTimeMinutes, fetchRealtimeTravelMinutes, getStoreLocation, DEFAULT_OFFICE_LOCATION, formatDate, formatTime, calculateWorkDurationMinutes } from '@/lib/utils';
+import { getDefaultStoreName } from '@/lib/constants';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useOrder } from '@/contexts/order-context';
 import {
@@ -79,7 +80,7 @@ function CheckInClient() {
         newStatus = '待機中';
       } else if (step === 'return_office') {
         newStatus = '帰社中';
-        const staffStore = profile?.['母店'] || (profile as any)?.mainStore || (profile as any)?.storeName || '横浜店';
+        const staffStore = profile?.['母店'] || (profile as any)?.mainStore || (profile as any)?.storeName || getDefaultStoreName();
         const targetOfficeLocation = getStoreLocation(staffStore);
         nextDest = targetOfficeLocation.name;
 

@@ -15,6 +15,7 @@ import {
     deleteField
 } from 'firebase/firestore';
 import type { Staff, WithId } from '@/lib/types';
+import { getDefaultStoreName } from '@/lib/constants';
 
 const COLLECTION = 'users';
 
@@ -300,7 +301,7 @@ export const StaffService = {
             email: data.email || `${newId.toLowerCase()}@${process.env.NEXT_PUBLIC_STAFF_EMAIL_DOMAIN || 'example.com'}`,
             role: data.role || 'staff',
             area: data.area || '県央',
-            '母店': data['母店'] || '横浜店',
+            '母店': data['母店'] || getDefaultStoreName(),
             color: data.color || '#3B82F6',
             currentStatus: '待機中',
             _type: 'staff' as const,
