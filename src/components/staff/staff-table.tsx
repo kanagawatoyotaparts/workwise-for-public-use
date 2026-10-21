@@ -18,7 +18,7 @@ import { useUserProfile } from '../../hooks/use-user-profile';
 import { useToast } from '@/hooks/use-toast';
 import { StaffService } from '@/services/staff-service';
 import { ImportModal } from '@/components/import/import-modal';
-import { STORE_COLORS } from '../../lib/constants';
+import { STORE_COLORS, MAIN_STORES } from '../../lib/constants';
 import { Staff, WithId } from '../../lib/types';
 import { format } from 'date-fns';
 import {
@@ -70,7 +70,7 @@ const SELECT_FIELDS: Record<string, string[]> = {
   'role': ['admin', 'staff', 'Admin/Staff', 'controller'],
   'ロール': ['admin', 'staff', 'Admin/Staff', 'controller'],
   'area': ['県西', '県央', '県東'],
-  '母店': ['横浜店', '横須賀店', '東名川崎店', '相模原店', '厚木店', '綾瀬店', '小田原店'],
+  '母店': Array.from(MAIN_STORES),
 };
 
 const COLUMN_VISIBILITY_KEY = 'workwise_staff_columns_v1';

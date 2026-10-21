@@ -23,9 +23,10 @@ import {
 import { UserPlus, Loader2 } from 'lucide-react';
 import { StaffService } from '@/services/staff-service';
 import { useToast } from '@/hooks/use-toast';
+import { MAIN_STORES } from '@/lib/constants';
 
 const AREA_OPTIONS = ['県東', '県央', '県西'];
-const STORE_OPTIONS = ['横浜店', '横須賀店', '東名川崎店', '相模原店', '厚木店', '綾瀬店', '小田原店'];
+const STORE_OPTIONS = MAIN_STORES;
 const ROLE_OPTIONS = [
   { value: 'staff', label: 'staff (スタッフ)' },
   { value: 'admin/staff', label: 'admin/staff (管理者・スタッフ兼任)' },
@@ -42,7 +43,7 @@ export function AddStaffDialog({ onCreated }: { onCreated?: () => void }) {
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('staff');
   const [area, setArea] = useState('県東');
-  const [mainStore, setMainStore] = useState('横浜店');
+  const [mainStore, setMainStore] = useState(MAIN_STORES[0] || '横浜店');
   const [color, setColor] = useState('#3B82F6');
 
   const handleSubmit = async (e: React.FormEvent) => {
