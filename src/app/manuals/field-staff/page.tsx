@@ -26,7 +26,10 @@ import {
     LogIn,
     Share2,
     CalendarCheck,
-    BookmarkCheck
+    BookmarkCheck,
+    CheckSquare,
+    Lock,
+    Unlock
 } from 'lucide-react';
 
 export default function FieldStaffManualPage() {
@@ -52,16 +55,18 @@ export default function FieldStaffManualPage() {
             <div className="border-b pb-6 space-y-3">
                 <div className="flex items-center gap-2 text-primary font-semibold text-sm">
                     <Smartphone className="h-4 w-4" />
-                    現場スタッフ向け操作ガイド (完全版)
+                    現場スタッフ向け操作ガイド (完全版・v2.2.5対応)
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
                     WorkWise 現場スタッフ操作マニュアル
                 </h1>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                    WorkWiseへようこそ！本マニュアルは、現場スタッフの皆様がスマートフォンを使って朝の出勤から現場での作業報告、夕方の退勤まで、<strong>最初から順番に迷わず操作できるように分かりやすく解説したガイド</strong>です。
+                    WorkWiseへようこそ！本マニュアルは、現場スタッフの皆様がスマートフォンを使って朝の出勤から現場での作業報告、夕方の退勤まで、<strong>最初から順番に迷わず操作できるように全画面画像付きで分かりやすく解説したガイド</strong>です。
                 </p>
                 <div className="flex flex-wrap gap-2 pt-1">
                     <Badge variant="secondary" className="text-xs font-normal">📱 スマートフォン対応</Badge>
+                    <Badge variant="secondary" className="text-xs font-normal">✅ タスク確認バッジ連動</Badge>
+                    <Badge variant="secondary" className="text-xs font-normal">🔒 横画面移動ロック搭載</Badge>
                     <Badge variant="secondary" className="text-xs font-normal">⏱️ 作業開始省略OK</Badge>
                     <Badge variant="secondary" className="text-xs font-normal">🚗 同店舗複数台作業対応</Badge>
                     <Badge variant="secondary" className="text-xs font-normal">🛠️ 打刻修正モード搭載</Badge>
@@ -81,22 +86,28 @@ export default function FieldStaffManualPage() {
                         <span className="font-bold text-foreground">1.</span> 事前準備（ログイン・ホーム画面追加）
                     </a>
                     <a href="#screens" className="p-1.5 hover:text-primary transition-colors flex items-center gap-1.5">
-                        <span className="font-bold text-foreground">2.</span> 画面の見方（予定確認・自分のタスク表示）
+                        <span className="font-bold text-foreground">2.</span> 画面の見方（予定確認・自分のタスク絞り込み）
+                    </a>
+                    <a href="#task-confirm" className="p-1.5 hover:text-primary transition-colors flex items-center gap-1.5">
+                        <span className="font-bold text-foreground">3.</span> タスク確認ボタンと張り替え時リセット
                     </a>
                     <a href="#flow" className="p-1.5 hover:text-primary transition-colors flex items-center gap-1.5">
-                        <span className="font-bold text-foreground">3.</span> 一日の基本業務フロー（STEP 1〜6）
+                        <span className="font-bold text-foreground">4.</span> 一日の基本業務フロー（STEP 1〜6）
                     </a>
                     <a href="#samestore" className="p-1.5 hover:text-primary transition-colors flex items-center gap-1.5">
-                        <span className="font-bold text-foreground">4.</span> 同一店舗で2台以上作業する場合
+                        <span className="font-bold text-foreground">5.</span> 同一店舗で2台以上連続で作業する場合
                     </a>
                     <a href="#correction" className="p-1.5 hover:text-primary transition-colors flex items-center gap-1.5">
-                        <span className="font-bold text-foreground">5.</span> 打刻を間違えた・忘れたときの修正方法
+                        <span className="font-bold text-foreground">6.</span> 打刻を間違えた・忘れたときの修正方法
+                    </a>
+                    <a href="#drag-lock" className="p-1.5 hover:text-primary transition-colors flex items-center gap-1.5">
+                        <span className="font-bold text-foreground">7.</span> スマホ横画面表示とチップ誤操作防止ロック
                     </a>
                     <a href="#emergency" className="p-1.5 hover:text-primary transition-colors flex items-center gap-1.5">
-                        <span className="font-bold text-foreground">6.</span> 緊急時の連絡方法
+                        <span className="font-bold text-foreground">8.</span> 緊急時の連絡方法
                     </a>
                     <a href="#qa" className="p-1.5 hover:text-primary transition-colors flex items-center gap-1.5 sm:col-span-2">
-                        <span className="font-bold text-foreground">7.</span> よくある質問と困ったときの対処法（Q&A）
+                        <span className="font-bold text-foreground">9.</span> よくある質問と困ったときの対処法（Q&A）
                     </a>
                 </CardContent>
             </Card>
@@ -134,7 +145,7 @@ export default function FieldStaffManualPage() {
                                 <div>
                                     <p className="font-semibold text-foreground">位置情報（GPS）の利用を許可する</p>
                                     <p className="text-muted-foreground text-xs mt-0.5">
-                                        「位置情報の利用を許可しますか？」と表示されたら、必ず<strong>「許可」</strong>を選択してください。安全・正確な配車管理のため、ボタン押下時の位置情報が自動記録されます。
+                                        「位置情報の利用を許可しますか？」と表示されたら、必ず<strong>「許可」</strong>を選択してください。安全・正確な運行管理や受注割当のため、ボタン押下時の位置情報が自動記録されます。
                                     </p>
                                 </div>
                             </div>
@@ -147,7 +158,7 @@ export default function FieldStaffManualPage() {
                                 おすすめ：スマートフォンの「ホーム画面に追加」を行うと便利です！
                             </div>
                             <p className="text-xs text-blue-900 dark:text-blue-200 leading-relaxed">
-                                ブラウザのメニュー（iPhoneは共有アイコン、Androidは右上の︙メニュー）から<strong>「ホーム画面に追加」</strong>を選択すると、スマホの画面に専用アイコンが配置され、通常のアプリと同じようにワンタップで起動できるようになります。
+                                ブラウザのメニュー（iPhoneは下部の共有アイコン、Androidは右上の3点メニュー）から<strong>「ホーム画面に追加」</strong>を選択すると、スマホの画面に専用アプリアイコンが配置され、通常のアプリと同じようにワンタップで起動できるようになります。
                             </p>
                         </div>
                     </CardContent>
@@ -167,18 +178,18 @@ export default function FieldStaffManualPage() {
                             ログインすると、本日の業務スケジュール画面が表示されます。各案件カードには訪問先店舗名、予定時間、作業内容（タイヤサイズ・本数等）、特記事項が記載されています。
                         </p>
 
-                        <div className="p-3.5 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 space-y-2">
+                        <div className="p-3.5 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 space-y-3">
                             <div className="flex items-center justify-between">
                                 <span className="font-bold text-foreground flex items-center gap-1.5">
                                     <Smartphone className="h-4 w-4 text-blue-600" />
-                                    「自分のタスクのみ表示」スイッチ
+                                    「自分のタスクのみ表示」スイッチ（★おすすめ機能）
                                 </span>
-                                <Badge variant="outline" className="text-blue-600 border-blue-300 text-[10px]">おすすめ機能</Badge>
+                                <Badge variant="outline" className="text-blue-600 border-blue-300 text-[10px]">絞り込み表示</Badge>
                             </div>
                             <p className="text-xs text-muted-foreground">
-                                画面上のスイッチをONにすると、<strong>他のスタッフの予定が隠れ、自分が担当する案件だけがスッキリ絞り込み表示</strong>されます。当日の予定を迷わず確認できます。
+                                画面上部の「自分のタスクのみ表示」トグルをONにすると、<strong>他のスタッフの予定が隠れ、自分が担当する案件だけがスッキリ絞り込み表示</strong>されます。当日のスケジュールを迷わず一目で確認できます。
                             </p>
-                            <div className="relative w-full max-w-sm mx-auto overflow-hidden rounded-lg border shadow-sm my-2">
+                            <div className="relative w-full max-w-sm mx-auto overflow-hidden rounded-lg border shadow-sm my-2 bg-white dark:bg-slate-950">
                                 <img
                                     src="/images/manual/mobile-my-tasks-view.png"
                                     alt="モバイル画面：自分のタスクのみ表示"
@@ -188,16 +199,86 @@ export default function FieldStaffManualPage() {
                         </div>
 
                         <p className="text-xs text-muted-foreground">
-                            作業を行う案件のカードをタップすると、その案件の<strong>「チェックイン画面（ボタン操作画面）」</strong>へ移動します。
+                            作業を行う案件のカードをタップすると、その案件の<strong>「チェックイン画面（移動開始・到着・作業完了の操作画面）」</strong>へ移動します。
                         </p>
                     </CardContent>
                 </Card>
             </section>
 
-            {/* 3. 一日の基本業務フロー */}
+            {/* 3. タスク確認ボタンと張り替え時リセット */}
+            <section id="task-confirm" className="space-y-4 pt-2">
+                <div className="flex items-center gap-2">
+                    <Badge className="bg-blue-600 text-white">第 3 章</Badge>
+                    <h2 className="text-xl font-bold tracking-tight">タスク確認ボタンと担当張り替え時リセット（v2.2.3新機能）</h2>
+                </div>
+
+                <Card className="shadow-sm border-blue-200 bg-blue-50/20">
+                    <CardContent className="pt-6 space-y-4 text-xs sm:text-sm">
+                        <div className="space-y-2">
+                            <p className="font-semibold text-foreground flex items-center gap-2">
+                                <CheckSquare className="h-4 w-4 text-blue-600" />
+                                出発前の「タスク確認」ボタン押下ルール
+                            </p>
+                            <p className="text-muted-foreground leading-relaxed">
+                                朝の予定確認時や現場へ向かう前に、各案件の依頼内容（訪問先、本数、タイヤサイズ、注意事項）を確認したら、案件詳細画面の<strong>「タスク確認」</strong>ボタンを押します。
+                            </p>
+                        </div>
+
+                        <div className="grid sm:grid-cols-2 gap-4 pt-1">
+                            {/* モバイル側の表示 */}
+                            <div className="space-y-2">
+                                <p className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                                    【スマホ画面】「確」マークと確認済み表示
+                                </p>
+                                <div className="relative w-full max-w-xs mx-auto overflow-hidden rounded-lg border shadow-sm bg-white">
+                                    <img
+                                        src="/images/manual/mobile-task-confirmed-view.png"
+                                        alt="現場スマホ画面でのタスク確認状態表示"
+                                        className="w-full h-auto object-cover"
+                                    />
+                                </div>
+                                <p className="text-[11px] text-muted-foreground">
+                                    確認ボタンを押すと「タスク確認済」に変わり、案件カードに青い「確」バッジが付与されます。
+                                </p>
+                            </div>
+
+                            {/* 管理者側の表示 */}
+                            <div className="space-y-2">
+                                <p className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                                    【管理者タイムライン】「確」バッジのリアルタイム連携
+                                </p>
+                                <div className="relative w-full max-w-xs mx-auto overflow-hidden rounded-lg border shadow-sm bg-white">
+                                    <img
+                                        src="/images/manual/timeline-task-confirmed-badge.png"
+                                        alt="タイムライン上の青い確マーク表示"
+                                        className="w-full h-auto object-cover"
+                                    />
+                                </div>
+                                <p className="text-[11px] text-muted-foreground">
+                                    管理者のタイムライン画面のチップ上にも青い「確」アイコンが即座に表示され、「現場スタッフが内容を把握した」ことが一目で伝わります。
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* 張り替え時自動リセットの解説 */}
+                        <div className="p-3.5 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-xl space-y-1.5">
+                            <div className="flex items-center gap-2 font-bold text-amber-800 dark:text-amber-300 text-xs">
+                                <ShieldAlert className="h-4 w-4" />
+                                【重要】管理者が担当者を張り替えた場合の安心仕様
+                            </div>
+                            <p className="text-xs text-amber-900 dark:text-amber-200 leading-relaxed">
+                                元の担当スタッフ（スタッフA）が「タスク確認」を押していた案件であっても、<strong>管理者が案件を別のスタッフ（スタッフB）に張り替えた場合、確認状態は自動的にクリア（未確認にリセット）</strong>されます。<br />
+                                新たに担当となったスタッフBのスマホ画面では、未確認状態で表示されるため、<strong>「引き継いだスタッフが改めて内容を確認し、自分の責任でタスク確認を押す」</strong>という二重チェックが自然に行えるようになっています。
+                            </p>
+                        </div>
+                    </CardContent>
+                </Card>
+            </section>
+
+            {/* 4. 一日の基本業務フロー */}
             <section id="flow" className="space-y-4 pt-2">
                 <div className="flex items-center gap-2">
-                    <Badge className="bg-emerald-700 text-white">第 3 章</Badge>
+                    <Badge className="bg-emerald-700 text-white">第 4 章</Badge>
                     <h2 className="text-xl font-bold tracking-tight">一日の基本業務フロー（最初から最後まで）</h2>
                 </div>
 
@@ -230,16 +311,15 @@ export default function FieldStaffManualPage() {
                             <div className="flex items-center justify-between">
                                 <CardTitle className="text-base flex items-center gap-2">
                                     <Badge className="bg-amber-500 text-white">STEP 2</Badge>
-                                    現場へ向けて出発する
+                                    予定を確認し、現場へ出発する
                                 </CardTitle>
                                 <PlayCircle className="h-4 w-4 text-amber-500" />
                             </div>
                         </CardHeader>
                         <CardContent className="px-4 pb-4 text-xs sm:text-sm space-y-2 text-muted-foreground">
                             <p>• 向かう案件をタップしてチェックイン画面を開きます。</p>
-                            <p>• 案件の依頼内容を確認したら <strong>「タスク確認」</strong> を押します（確認済みとして記録され、管理者のチップに「確」が付きます）。</p>
-                            <p className="text-[11px] text-amber-700 bg-amber-50 p-1.5 rounded border border-amber-200">※管理者が担当者を張り替えた場合、確認状態は自動リセットされます。新担当者は改めて内容を確認して「タスク確認」を押してください。</p>
-                            <p>• 車で現場へ向けて出発するタイミングで <strong>「移動開始」</strong> ボタンを押します（ステータスが「移動中」になります）。</p>
+                            <p>• 案件の依頼内容を確認したら <strong>「タスク確認」</strong> を押します（確認済みとして記録され、管理者のチップに青い「確」が付きます）。</p>
+                            <p>• 車で現場へ向けて出発するタイミングで <strong>「移動開始」</strong> ボタンを押します（ステータスが「移動中」になり、管理者に移動開始時刻が伝わります）。</p>
                         </CardContent>
                     </Card>
 
@@ -297,9 +377,12 @@ export default function FieldStaffManualPage() {
                                 <CheckCircle2 className="h-4 w-4 text-emerald-600" />
                             </div>
                         </CardHeader>
-                        <CardContent className="px-4 pb-4 text-xs sm:text-sm space-y-1 text-muted-foreground">
+                        <CardContent className="px-4 pb-4 text-xs sm:text-sm space-y-2 text-muted-foreground">
                             <p>• すべてのタイヤ作業・片付け・点検が終了したら、<strong>「作業完了」</strong> ボタンを押します。</p>
                             <p>• ステータスが「作業完了」となり、実作業時間が自動計算されてデータベースおよび日報スプレッドシートに記録されます。</p>
+                            <div className="p-2.5 bg-slate-100 dark:bg-slate-800/60 rounded border border-slate-200 text-xs text-slate-700 dark:text-slate-300">
+                                💡 <strong>管理者側の連動表示</strong>: 作業完了を押すと、管理者のタイムライン上のチップが自動で<strong>落ち着いた濃いグレー（赤丸の「済」マーク付）にグレーアウト</strong>されます。管理者は「残りの色付きタスク」を見るだけで現場の進捗を瞬時に把握できるため、電話での完了報告は一切不要です！
+                            </div>
                         </CardContent>
                     </Card>
 
@@ -316,16 +399,16 @@ export default function FieldStaffManualPage() {
                         </CardHeader>
                         <CardContent className="px-4 pb-4 text-xs sm:text-sm space-y-2 text-muted-foreground">
                             <p>• 現場から母店へ戻る出発の際、<strong>「帰社」</strong> ボタンを押します。GPSから母店への推定到着時刻（ETA）が自動計算され、管理者に共有されます。</p>
-                            <p>• 母店に戻り、一日のすべての業務が終了したら <strong>「退勤」</strong> ボタンを押します。ステータスが「退勤済」となり、一日の記録が完了します。</p>
+                            <p>• 母店に戻り、一日のすべての業務が終了したら <strong>「退勤」</strong> ボタンを押します。ステータスが「退勤済」となり、一日の記録が完了します。今日も一日お疲れ様でした！</p>
                         </CardContent>
                     </Card>
                 </div>
             </section>
 
-            {/* 4. 同一店舗で2台以上連続で作業する場合 */}
+            {/* 5. 同一店舗で2台以上連続で作業する場合 */}
             <section id="samestore" className="space-y-4 pt-2">
                 <div className="flex items-center gap-2">
-                    <Badge className="bg-blue-700 text-white">第 4 章</Badge>
+                    <Badge className="bg-blue-700 text-white">第 5 章</Badge>
                     <h2 className="text-xl font-bold tracking-tight">同一店舗で2台以上作業する場合</h2>
                 </div>
 
@@ -341,7 +424,7 @@ export default function FieldStaffManualPage() {
                                 画面上部の進行バッジ表示
                             </p>
                             <p className="text-xs text-muted-foreground">
-                                画面上部に <code className="bg-slate-100 px-1 py-0.5 rounded text-blue-700 font-bold">🚗 同店舗での作業: 1台目 / 全2台 [現場到着済]</code> と表示され、同じ場所での作業であることが自動認識されます。
+                                画面上部に <code className="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-blue-700 font-bold">🚗 同店舗での作業: 1台目 / 全2台 [現場到着済]</code> と表示され、同じ場所での作業であることが自動認識されます。
                             </p>
                         </div>
 
@@ -350,7 +433,7 @@ export default function FieldStaffManualPage() {
                                 <p className="text-xs font-bold text-slate-700 dark:text-slate-300">
                                     1台目完了時の選択画面：
                                 </p>
-                                <div className="relative w-full max-w-xs mx-auto overflow-hidden rounded-lg border shadow-sm">
+                                <div className="relative w-full max-w-xs mx-auto overflow-hidden rounded-lg border shadow-sm bg-white">
                                     <img
                                         src="/images/manual/checkin-same-store-dialog.jpg"
                                         alt="同店舗の次の作業を選択ダイアログ"
@@ -379,10 +462,10 @@ export default function FieldStaffManualPage() {
                 </Card>
             </section>
 
-            {/* 5. 修正モード */}
+            {/* 6. 修正モード */}
             <section id="correction" className="space-y-4 pt-2">
                 <div className="flex items-center gap-2">
-                    <Badge className="bg-red-600 text-white">第 5 章</Badge>
+                    <Badge className="bg-red-600 text-white">第 6 章</Badge>
                     <h2 className="text-xl font-bold tracking-tight">打刻を間違えた・忘れたときの修正方法（修正モード）</h2>
                 </div>
 
@@ -394,7 +477,7 @@ export default function FieldStaffManualPage() {
 
                         <div className="grid sm:grid-cols-2 gap-4">
                             <div className="space-y-2">
-                                <div className="relative w-full max-w-xs mx-auto overflow-hidden rounded-lg border shadow-sm">
+                                <div className="relative w-full max-w-xs mx-auto overflow-hidden rounded-lg border shadow-sm bg-white">
                                     <img
                                         src="/images/manual/checkin-correction-mode.jpg"
                                         alt="修正モード画面（全ボタン活性化）"
@@ -441,10 +524,62 @@ export default function FieldStaffManualPage() {
                 </Card>
             </section>
 
-            {/* 6. 緊急時の連絡方法 */}
+            {/* 7. スマホ横画面表示とチップ誤操作防止ロック（v2.2.5新機能） */}
+            <section id="drag-lock" className="space-y-4 pt-2">
+                <div className="flex items-center gap-2">
+                    <Badge className="bg-indigo-600 text-white">第 7 章</Badge>
+                    <h2 className="text-xl font-bold tracking-tight">スマホ横画面表示とチップ移動ロック（v2.2.5新機能）</h2>
+                </div>
+
+                <Card className="shadow-sm border-indigo-200 bg-indigo-50/20">
+                    <CardContent className="pt-6 space-y-4 text-xs sm:text-sm">
+                        <div className="space-y-2">
+                            <p className="font-semibold text-foreground flex items-center gap-2">
+                                <Lock className="h-4 w-4 text-indigo-600" />
+                                スマートフォン横向き時の誤操作自動防止機能
+                            </p>
+                            <p className="text-muted-foreground leading-relaxed">
+                                スマートフォンを横向きに回転すると、PC用の全体ダッシュボード画面が表示され、チーム全体のタイムラインを広々と閲覧できます。
+                                しかし、スマホのタッチ画面ではスクロール中に誤ってチップに触れてしまい、意図せず受注の割当を変更してしまうリスクがありました。
+                            </p>
+                        </div>
+
+                        <div className="relative w-full max-w-lg mx-auto overflow-hidden rounded-lg border shadow-sm my-2 bg-white">
+                            <img
+                                src="/images/manual/mobile-landscape-drag-lock.png"
+                                alt="スマホ横画面表示時のチップ移動自動ロック機能"
+                                className="w-full h-auto object-cover"
+                            />
+                        </div>
+
+                        <div className="grid sm:grid-cols-2 gap-3 pt-2 text-xs">
+                            <div className="p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 space-y-1">
+                                <p className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                                    <Lock className="h-3.5 w-3.5 text-indigo-600" />
+                                    自動ロック（初期状態）
+                                </p>
+                                <p className="text-muted-foreground leading-relaxed">
+                                    スマートフォンから横画面を表示した際、<strong>チップのドラッグ移動が自動的にロック（保護）</strong>されます。指で触れたりスクロールしてもチップがズレる心配がありません。
+                                </p>
+                            </div>
+                            <div className="p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 space-y-1">
+                                <p className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                                    <Unlock className="h-3.5 w-3.5 text-emerald-600" />
+                                    ロック解除トグルスイッチ
+                                </p>
+                                <p className="text-muted-foreground leading-relaxed">
+                                    実際にチップを移動させたい場合は、画面ヘッダー右上の <strong>「🔒 移動ロック」トグルをタップして「🔓 解除」</strong> に切り替えることで、自由にドラッグ＆ドロップ移動が可能です。
+                                </p>
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
+            </section>
+
+            {/* 8. 緊急時の連絡方法 */}
             <section id="emergency" className="space-y-4 pt-2">
                 <div className="flex items-center gap-2">
-                    <Badge className="bg-red-700 text-white">第 6 章</Badge>
+                    <Badge className="bg-red-700 text-white">第 8 章</Badge>
                     <h2 className="text-xl font-bold tracking-tight">緊急時の連絡方法</h2>
                 </div>
 
@@ -469,10 +604,10 @@ export default function FieldStaffManualPage() {
                 </Card>
             </section>
 
-            {/* 7. よくある質問 (Q&A) */}
+            {/* 9. よくある質問 (Q&A) */}
             <section id="qa" className="space-y-4 pt-2">
                 <div className="flex items-center gap-2">
-                    <Badge className="bg-slate-800 text-white">第 7 章</Badge>
+                    <Badge className="bg-slate-800 text-white">第 9 章</Badge>
                     <h2 className="text-xl font-bold tracking-tight flex items-center gap-2">
                         <HelpCircle className="h-5 w-5 text-blue-600" />
                         よくある質問と困ったときの対処法（Q&A）
@@ -532,8 +667,7 @@ export default function FieldStaffManualPage() {
 
             {/* フッター */}
             <div className="text-center text-xs text-muted-foreground pt-4 pb-8 border-t">
-                <p>トヨタモビリティパーツ株式会社 神奈川支社 営業総括室</p>
-                <p className="mt-1 font-semibold text-slate-700 dark:text-slate-300">今日も一日、ご安全に！</p>
+                <p className="font-semibold text-slate-700 dark:text-slate-300">今日も一日、ご安全に！</p>
             </div>
         </div>
     );

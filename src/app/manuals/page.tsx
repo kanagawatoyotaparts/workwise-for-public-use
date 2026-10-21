@@ -63,7 +63,7 @@ export default function ManualsPage() {
                     </CardHeader>
                     <CardContent className="flex-1 flex flex-col justify-between space-y-4">
                         <CardDescription className="text-xs leading-relaxed">
-                            タイムライン配車、拠点列の変更、スクロール固定、大画面表示、スタッフ管理の即時保存など、システム全体の機能を解説しています。
+                            タイムライン受注割当、拠点列の変更、スクロール固定、大画面表示、スタッフ管理の即時保存など、システム全体の機能を解説しています。
                         </CardDescription>
                         <div className="space-y-2 pt-2">
                             <Button asChild className="w-full bg-blue-600 hover:bg-blue-700 text-white gap-1.5" size="sm">
