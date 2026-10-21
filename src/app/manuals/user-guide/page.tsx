@@ -315,6 +315,45 @@ export default function UserGuidePage() {
                                 </p>
                             </div>
                         </div>
+
+                        {/* 完了タスクのグレーアウトと進捗可視化 */}
+                        <div className="p-4 rounded-xl bg-slate-100 dark:bg-slate-800/60 border border-slate-300 dark:border-slate-700 space-y-3 mt-4">
+                            <div className="flex items-center justify-between">
+                                <h4 className="font-bold text-sm text-foreground flex items-center gap-2">
+                                    <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+                                    【進捗が一目瞭然】完了タスクの自動グレーアウト機能
+                                </h4>
+                                <Badge variant="outline" className="text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 border-slate-300 text-[10px]">
+                                    視覚的進捗管理
+                                </Badge>
+                            </div>
+                            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                                タイムライン上の受注チップは、通常は各スタッフの<strong>担当カラー（スタッフ色）</strong>で鮮やかに表示されています。現場スタッフが作業を完了（または管理者が作業完了を打刻）すると、チップの表示が自動的に切り替わります：
+                            </p>
+                            <div className="grid sm:grid-cols-2 gap-3 text-xs">
+                                <div className="p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 space-y-1">
+                                    <div className="flex items-center gap-2 font-bold text-slate-700 dark:text-slate-300">
+                                        <div className="w-3.5 h-3.5 rounded bg-slate-600"></div>
+                                        完了タスク：落ち着いた濃いグレー（済マーク付）
+                                    </div>
+                                    <p className="text-muted-foreground leading-relaxed">
+                                        作業完了となったチップは、スタッフ色から<strong>落ち着いたチャコールグレー（Slate-700）へ自動でグレーアウト</strong>し、左上に赤丸の<strong>「済」</strong>スタンプが付与されます。
+                                    </p>
+                                </div>
+                                <div className="p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 space-y-1">
+                                    <div className="flex items-center gap-2 font-bold text-blue-700 dark:text-blue-300">
+                                        <div className="w-3.5 h-3.5 rounded bg-blue-500"></div>
+                                        残タスク：鮮やかなスタッフ固有カラー
+                                    </div>
+                                    <p className="text-muted-foreground leading-relaxed">
+                                        まだ完了していない案件だけが<strong>鮮やかな色付き</strong>のまま残るため、パッとタイムラインを見るだけで<strong>「今日残っているタスクがどれくらいあるか」が一目で直感的に把握</strong>できます。
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="p-2.5 bg-blue-50/70 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg text-xs text-blue-900 dark:text-blue-200 leading-relaxed">
+                                💡 <strong>管理者のメリット</strong>: 夕方や業務途中の忙しい時間帯でも、現場に電話で確認することなく「誰のどこにまだ作業が残っているか」「チーム全体の進捗が何割完了しているか」を瞬時に判断できます。
+                            </div>
+                        </div>
                     </CardContent>
                 </Card>
             </section>

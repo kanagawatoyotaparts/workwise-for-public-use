@@ -377,9 +377,12 @@ export default function FieldStaffManualPage() {
                                 <CheckCircle2 className="h-4 w-4 text-emerald-600" />
                             </div>
                         </CardHeader>
-                        <CardContent className="px-4 pb-4 text-xs sm:text-sm space-y-1 text-muted-foreground">
+                        <CardContent className="px-4 pb-4 text-xs sm:text-sm space-y-2 text-muted-foreground">
                             <p>• すべてのタイヤ作業・片付け・点検が終了したら、<strong>「作業完了」</strong> ボタンを押します。</p>
                             <p>• ステータスが「作業完了」となり、実作業時間が自動計算されてデータベースおよび日報スプレッドシートに記録されます。</p>
+                            <div className="p-2.5 bg-slate-100 dark:bg-slate-800/60 rounded border border-slate-200 text-xs text-slate-700 dark:text-slate-300">
+                                💡 <strong>管理者側の連動表示</strong>: 作業完了を押すと、管理者のタイムライン上のチップが自動で<strong>落ち着いた濃いグレー（赤丸の「済」マーク付）にグレーアウト</strong>されます。管理者は「残りの色付きタスク」を見るだけで現場の進捗を瞬時に把握できるため、電話での完了報告は一切不要です！
+                            </div>
                         </CardContent>
                     </Card>
 
