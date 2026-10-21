@@ -287,11 +287,11 @@ export default function UserGuidePage() {
                         <div className="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-50">
                             <img
                                 src="/images/manual/pc-5-timeline-assigned-chips.png"
-                                alt="タイムラインへのチップ配置状態"
+                                alt="タイムラインへのチップ配置状態と完了タスクのグレーアウト表示"
                                 className="w-full h-auto object-cover"
                             />
                             <div className="p-2.5 text-xs text-muted-foreground text-center bg-slate-100 dark:bg-slate-800 border-t">
-                                【図 4-1】タイムラインへのチップ配置状態（移動時間チップの自動生成と正確な時間枠配置）
+                                【図 4-1】タイムラインへの受注割当と完了タスクのグレーアウト表示（完了した案件は濃いグレーになり、残りの色付きタスクが一目で把握可能）
                             </div>
                         </div>
 
