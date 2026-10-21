@@ -636,7 +636,7 @@ export default function UserGuidePage() {
 
                         <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 space-y-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
                             <p>
-                                • <strong>当日出勤スタッフのみを表示（v2.2.2改善）</strong>：以前発生していた「本日出勤していないスタッフが地図上に残ってしまう」問題を解消し、当日出勤打刻を行ったスタッフのみが地図上にアイコン表示されます。
+                                • <strong>当日出勤スタッフのみを地図表示</strong>：当日の出勤打刻を行ったスタッフのみが地図上にアイコン表示されます。
                             </p>
                             <p>
                                 • <strong>移動時間・距離の最適化</strong>：出発地、目的地、複数の経由地を選択し、「ルートを最適化」を押すだけで、所要時間が最小となる順序を瞬時に割り出します。
