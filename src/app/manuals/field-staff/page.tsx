@@ -145,7 +145,7 @@ export default function FieldStaffManualPage() {
                                 <div>
                                     <p className="font-semibold text-foreground">位置情報（GPS）の利用を許可する</p>
                                     <p className="text-muted-foreground text-xs mt-0.5">
-                                        「位置情報の利用を許可しますか？」と表示されたら、必ず<strong>「許可」</strong>を選択してください。安全・正確な配車管理のため、ボタン押下時の位置情報が自動記録されます。
+                                        「位置情報の利用を許可しますか？」と表示されたら、必ず<strong>「許可」</strong>を選択してください。安全・正確な運行管理や受注割当のため、ボタン押下時の位置情報が自動記録されます。
                                     </p>
                                 </div>
                             </div>
@@ -540,7 +540,7 @@ export default function FieldStaffManualPage() {
                             </p>
                             <p className="text-muted-foreground leading-relaxed">
                                 スマートフォンを横向きに回転すると、PC用の全体ダッシュボード画面が表示され、チーム全体のタイムラインを広々と閲覧できます。
-                                しかし、スマホのタッチ画面ではスクロール中に誤ってチップに触れてしまい、意図せず配車を移動させてしまうリスクがありました。
+                                しかし、スマホのタッチ画面ではスクロール中に誤ってチップに触れてしまい、意図せず受注の割当を変更してしまうリスクがありました。
                             </p>
                         </div>
 

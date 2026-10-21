@@ -56,13 +56,13 @@ export default function UserGuidePage() {
             <div className="border-b pb-6 space-y-3">
                 <div className="flex items-center gap-2 text-primary font-semibold text-sm">
                     <LayoutDashboard className="h-4 w-4" />
-                    管理者・配車担当向け 総合操作ガイド (完全図解版)
+                    管理者向け 総合操作ガイド (完全図解版)
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
                     WorkWise ユーザー総合操作マニュアル
                 </h1>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                    本マニュアルは、管理者や配車担当者の皆様がWorkWiseを使って、<strong>「注文の受付・登録」から「未割当タスクの確認」「タイムラインへの配車（ドラッグ＆ドロップ）」「担当変更時のタスク確認自動リセット」「汎用タスクの作成者自動記録」「スマホ横画面での誤操作防止」まで、最初から順番に迷わず操作できるように全画面スクリーンショット付きで解説した完全版ガイド</strong>です。
+                    本マニュアルは、管理者の皆様がWorkWiseを使って、<strong>「注文の受付・登録」から「未割当タスクの確認」「タイムラインへの受注割当（ドラッグ＆ドロップ）」「担当変更時のタスク確認自動リセット」「汎用タスクの作成者自動記録」「スマホ横画面での誤操作防止」まで、最初から順番に迷わず操作できるように全画面スクリーンショット付きで解説した完全版ガイド</strong>です。
                 </p>
                 <div className="flex flex-wrap gap-2 pt-1">
                     <Badge variant="secondary" className="text-xs font-normal">🖥️ PC・タブレット対応</Badge>
@@ -92,7 +92,7 @@ export default function UserGuidePage() {
                         <span className="font-bold text-foreground">3.</span> 未割当プールと動的チップ幅の確認
                     </a>
                     <a href="#section-4" className="p-1.5 hover:text-primary transition-colors flex items-center gap-1.5">
-                        <span className="font-bold text-foreground">4.</span> タイムラインへの配車（ドラッグ＆ドロップ）
+                        <span className="font-bold text-foreground">4.</span> タイムラインへの受注割当（ドラッグ＆ドロップ）
                     </a>
                     <a href="#section-5" className="p-1.5 hover:text-primary transition-colors flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-semibold">
                         <span className="font-bold text-foreground">5.</span> 【新機能】担当変更時のタスク確認自動リセット
@@ -125,7 +125,7 @@ export default function UserGuidePage() {
                 </div>
                 <Card className="shadow-xs border-slate-200">
                     <CardHeader>
-                        <CardTitle className="text-lg">配車管理の中心となるダッシュボード画面</CardTitle>
+                        <CardTitle className="text-lg">スケジュール・受注割当の中心となるダッシュボード画面</CardTitle>
                         <CardDescription>
                             ログイン後に表示されるメイン画面です。当日のスケジュール、スタッフの配置、未割当の注文が一目で確認できます。
                         </CardDescription>
@@ -158,7 +158,7 @@ export default function UserGuidePage() {
                                     ② 本日の受注タスク（未割当）
                                 </div>
                                 <p className="text-[11px] text-slate-600 leading-relaxed">
-                                    まだスタッフに割り当てられていない注文がチップとして並びます。青色のチップをドラッグして配車します。
+                                    まだスタッフに割り当てられていない注文がチップとして並びます。青色のチップをドラッグして割当を行います。
                                 </p>
                             </div>
                             <div className="p-3 rounded-lg bg-emerald-50/50 border border-emerald-100 space-y-1">
@@ -264,23 +264,23 @@ export default function UserGuidePage() {
                                 • <strong>チップの幅（長さ）</strong>：終了予定時刻から算出された所要時間に応じて、チップ自体の横幅が自動的に伸縮します（上記画像では、左の90分枠が、右の60分枠よりも横長に表示されています）。
                             </p>
                             <p>
-                                • <strong>時間帯の明記</strong>：チップ上に「13:30-15:00」のように開始〜終了の予定時刻が明確に印字されるため、配車前に作業時間枠を確認できます。
+                                • <strong>時間帯の明記</strong>：チップ上に「13:30-15:00」のように開始〜終了の予定時刻が明確に印字されるため、割当前に作業時間枠を確認できます。
                             </p>
                         </div>
                     </CardContent>
                 </Card>
             </section>
 
-            {/* 第4章: タイムラインへの配車（ドラッグ＆ドロップ） */}
+            {/* 第4章: タイムラインへの受注割当（ドラッグ＆ドロップ） */}
             <section id="section-4" className="space-y-4 pt-4">
                 <div className="flex items-center gap-2 border-l-4 border-blue-600 pl-3">
-                    <h2 className="text-xl sm:text-2xl font-bold">4. タイムラインへの配車（ドラッグ＆ドロップ）</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold">4. タイムラインへの受注割当（ドラッグ＆ドロップ）</h2>
                 </div>
                 <Card className="shadow-xs border-slate-200">
                     <CardHeader>
-                        <CardTitle className="text-lg">直感的なマウスドラッグによる配車操作</CardTitle>
+                        <CardTitle className="text-lg">直感的なマウスドラッグによる受注割当</CardTitle>
                         <CardDescription>
-                            未割当プールにあるチップを、担当させたいスタッフの行へドラッグ＆ドロップするだけで配車が完了します。
+                            未割当プールにあるチップを、担当させたいスタッフの行へドラッグ＆ドロップするだけで受注割当が完了します。
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
@@ -366,7 +366,7 @@ export default function UserGuidePage() {
                 </div>
                 <Card className="shadow-xs border-indigo-200 bg-gradient-to-b from-white to-indigo-50/20">
                     <CardHeader>
-                        <CardTitle className="text-lg">配車の張り替えに完全連動した安全再確認設計</CardTitle>
+                        <CardTitle className="text-lg">担当の変更（受注の再割当）に完全連動した安全再確認設計</CardTitle>
                         <CardDescription>
                             現場スタッフAが「タスク確認」を押した後に、管理者がスタッフBへチップを張り替えた際、Aの確認状態が自動クリアされ、Bが確実に再確認できる仕組みです。
                         </CardDescription>
