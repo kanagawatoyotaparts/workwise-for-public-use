@@ -667,7 +667,7 @@ export default function FieldStaffManualPage() {
 
             {/* フッター */}
             <div className="text-center text-xs text-muted-foreground pt-4 pb-8 border-t">
-                <p>トヨタモビリティパーツ株式会社 神奈川支社 営業総括室</p>
+                <p>トヨタモビリティパーツ株式会社 神奈川支社 ソリューションプロデュース部マーケティング室</p>
                 <p className="mt-1 font-semibold text-slate-700 dark:text-slate-300">今日も一日、ご安全に！</p>
             </div>
         </div>

@@ -703,6 +703,13 @@ export default function UserGuidePage() {
                     </Card>
                 </div>
             </section>
+
+            {/* フッター */}
+            <div className="text-center text-xs text-muted-foreground pt-4 pb-8 border-t space-y-1">
+                <p className="font-semibold text-foreground">システム管理者連絡先</p>
+                <p>トヨタモビリティパーツ株式会社 神奈川支社 ソリューションプロデュース部マーケティング室</p>
+                <p>Phone: 080-5434-9474 / Email: komine-wata@toyota-mp.co.jp</p>
+            </div>
         </div>
     );
 }
